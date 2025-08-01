@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nebuliton - Serverschmiede der Galaxien</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a0b3d 0%, #2d1b69 25%, #4c2c85 50%, #8b5fbf 75%, #b08ce8 100%);
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* Animated starfield background */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            animation: starsMove 20s linear infinite;
+        }
+
+        @keyframes starsMove {
+            0% { transform: translateY(0px); }
+            100% { transform: translateY(-100px); }
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 2s infinite alternate, starFloat 8s ease-in-out infinite;
+        }
+
+        @keyframes twinkle {
+            0% { opacity: 0.3; transform: scale(1); }
+            100% { opacity: 1; transform: scale(1.2); }
+        }
+
+        @keyframes starFloat {
+            0%, 100% { transform: translateY(0px) translateX(0px); }
+            25% { transform: translateY(-10px) translateX(5px); }
+            50% { transform: translateY(5px) translateX(-3px); }
+            75% { transform: translateY(-8px) translateX(-7px); }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1rem 0;
+            background: rgba(26, 11, 61, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav:hover {
+            background: rgba(26, 11, 61, 0.95);
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            max-width: none;
+            margin: 0;
+            width: 100%;
+            padding: 0 2rem;
+            position: relative;
+        }
+
+        .logo {
+            font-size: 2.2rem;
+            font-weight: bold;
+            color: #ffd700;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+        }
+
+        .logo-icon {
+            width: 3rem;
+            height: 3rem;
+            object-fit: contain;
+            filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.3));
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+            flex-wrap: nowrap;
+            white-space: nowrap;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #ffd700;
+            transform: translateY(-2px);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #ffd700;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            background: radial-gradient(ellipse at center, rgba(255, 107, 107, 0.2) 0%, transparent 50%);
+        }
+
+        .hero-title {
+            font-size: clamp(3rem, 8vw, 8rem);
+            font-weight: 900;
+            background: linear-gradient(45deg, #ffd700, #ff6b6b, #4ecdc4, #45b7d1);
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient 3s ease infinite, pulse 2s ease-in-out infinite alternate;
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+            margin-bottom: 1rem;
+            letter-spacing: 0.1em;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.05); }
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 3vw, 2rem);
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+        }
+
+        /* Welcome Section */
+        .welcome {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .welcome-card {
+            background: rgba(26, 11, 61, 0.8);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 3rem;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .welcome-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+            border-color: rgba(255, 215, 0, 0.6);
+        }
+
+        .welcome h2 {
+            font-size: 2.5rem;
+            color: #ffd700;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .welcome p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .services h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #ffd700;
+        }
+
+        .services-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            opacity: 0.8;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .service-card {
+            background: rgba(26, 11, 61, 0.7);
+            backdrop-filter: blur(15px);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #ff6b6b, #4ecdc4, #45b7d1, #ffd700);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 215, 0, 0.5);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            color: #ffd700;
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        .services-cta {
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        /* Community Section */
+        .community {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .community h2 {
+            font-size: 2.5rem;
+            color: #ffd700;
+            margin-bottom: 1rem;
+        }
+
+        .community-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .feature-card {
+            background: rgba(26, 11, 61, 0.6);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #ff6b6b, #4ecdc4, #45b7d1, #ffd700);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 215, 0, 0.4);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            color: #ffd700;
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(26, 11, 61, 0.9);
+            padding: 3rem 2rem 1rem;
+            margin-top: 5rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section h3 {
+            color: #ffd700;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: #ffd700;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 215, 0, 0.2);
+            opacity: 0.7;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .welcome-card {
+                padding: 2rem;
+            }
+        }
+
+        /* Floating elements */
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+    </style>
+</head>
+<body>
+<!-- Animated starfield -->
+<div class="stars" id="stars"></div>
+
+<!-- Navigation -->
+<nav>
+    <div class="nav-container">
+        <div class="logo">
+            <img src="logo.png" alt="Nebuliton Logo" class="logo-icon">
+            NEBULITON
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="hosting.html">Hosting</a></li>
+            <li><a href="game-hosting.html">Game Hosting</a></li>
+            <li><a href="apps.html">Apps</a></li>
+            <li><a href="community.html">Community</a></li>
+            <li><a href="about.html">Über uns</a></li>
+            <li><a href="https://cp.nebuliton.io/" target="_blank" rel="noopener noreferrer">Kunden Bereich</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero" id="home">
+    <h1 class="hero-title">NEBULITON</h1>
+    <p class="hero-subtitle">Serverschmiede der Galaxien</p>
+</section>
+
+<!-- Welcome Section -->
+<section class="welcome">
+    <div class="welcome-card floating">
+        <h2>✨ Willkommen bei Nebuliton</h2>
+        <p><strong>Serverschmiede der Galaxien</strong></p>
+        <p>Bei uns bekommst du deinen Platz im Universum!</p>
+        <p>Egal ob <strong>Minecraft</strong>, <strong>Rust</strong> oder dein eigener <strong>Discord-Bot</strong> – bei Nebuliton bekommst du blitzschnelles Hosting auf <strong>leistungsstarken Ryzen-Servern</strong>, made in Kiel .</p>
+        <p><strong>Du willst mehr wissen? 🚀</strong><br>
+            Scroll nach unten und entdecke, was wir alles anbieten!</p>
+        <a href="#services" class="cta-button">🚀 Unsere Angebote entdecken</a>
+    </div>
+</section>
+
+<!-- Services Section -->
+<section class="services" id="services">
+    <h2>🚀 Was Nebuliton Dir bietet</h2>
+    <p class="services-subtitle">Hosting, Tools & Community – alles aus einer galaktischen Hand.</p>
+
+    <div class="services-grid">
+        <div class="service-card">
+            <div class="service-icon">⚙️</div>
+            <h3>Gameserver Hosting</h3>
+            <p>Schnelle, sichere und leistungsstarke Server für beliebte Spiele – ideal für dich und deine Community.</p>
+        </div>
+
+        <div class="service-card">
+            <div class="service-icon">🤖</div>
+            <h3>Bot- & App-Hosting</h3>
+            <p>Betreibe deine Discord-Bots, Tools oder Anwendungen zuverlässig auf unseren Systemen.</p>
+        </div>
+
+        <div class="service-card">
+            <div class="service-icon">🎧</div>
+            <h3>Musik & Voice-Dienste</h3>
+            <p>Sinusbot Hosting für Musikstreams & Tools für Community-Kommunikation – glasklar & stabil.</p>
+        </div>
+
+        <div class="service-card">
+            <div class="service-icon">📊</div>
+            <h3>Status & Monitoring</h3>
+            <p>Behalte alle deine Dienste im Blick – mit einfach einrichtbaren Statusseiten und Checks.</p>
+        </div>
+
+        <div class="service-card">
+            <div class="service-icon">📱</div>
+            <h3>Eigene Native Apps</h3>
+            <p>iOS & Android Apps für volle Kontrolle – ob Servermanagement oder Monitoring von unterwegs.</p>
+        </div>
+
+        <div class="service-card">
+            <div class="service-icon">🌐</div>
+            <h3>Community & Support</h3>
+            <p>Wir sind für dich da – mit aktiver Discord-Community, Guides, Tipps und persönlichem Support.</p>
+        </div>
+    </div>
+
+    <div class="services-cta">
+        <a href="#overview" class="cta-button">⚡ Zur Angebots-Übersicht</a>
+    </div>
+</section>
+
+<!-- Community Section -->
+<section class="community" id="community">
+    <h2>🪐 Willkommen bei Nebula</h2>
+    <p>Nebula ist unsere Community – ein Ort für gemeinsame Abenteuer, kreative Welten und echte Freundschaft. Hier bist du nicht nur Spieler, sondern Teil von etwas Größerem.</p>
+
+    <div class="community-features">
+        <div class="feature-card">
+            <div class="feature-icon">🏠</div>
+            <h3>Eigene Server</h3>
+            <p>Spiele auf Servern, die von der Community für die Community gemacht wurden – fair, ohne Pay-to-Win.</p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">🎨</div>
+            <h3>Kreative Freiheit</h3>
+            <p>Baue, gestalte, entdecke – unsere Welten wachsen durch deine Ideen.</p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">💬</div>
+            <h3>Aktiver Discord</h3>
+            <p>Freundlicher Austausch, schnelle Hilfe & entspannte Gespräche rund um die Uhr.</p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">🛡️</div>
+            <h3>Fair & Sicher</h3>
+            <p>Moderation mit Herz: Wir sorgen für eine faire, respektvolle Atmosphäre ohne toxisches Verhalten.</p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">👥</div>
+            <h3>Gemeinschaft zählt</h3>
+            <p>Hier zählt jede Stimme – bring dich ein, sei kreativ und gestalte mit uns die Zukunft von Nebula.</p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">🚀</div>
+            <h3>Teil von Nebuliton</h3>
+            <p>Nebula ist der Community-Zweig von Nebuliton – mit direktem Draht zum Hosting-Team & exklusiven Vorteilen.</p>
+        </div>
+    </div>
+
+    <a href="https://discord.gg/nebuliton" target="_blank" rel="noopener noreferrer" class="cta-button">🎮 Jetzt Teil werden auf Discord</a>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-content">
+        <div class="footer-section">
+            <h3>Nebuliton</h3>
+            <p>Serverschmiede der Galaxien 🚀</p>
+            <a href="https://de.trustpilot.com/review/nebuliton.de" target="_blank" rel="noopener noreferrer">⭐ Bewerten Sie uns auf Trustpilot</a>
+        </div>
+
+        <div class="footer-section">
+            <h3>Rechtliches</h3>
+            <a href="#agb">AGB</a>
+            <a href="#datenschutz">Datenschutz</a>
+            <a href="#impressum">Impressum</a>
+        </div>
+
+        <div class="footer-section">
+            <h3>Community & App</h3>
+            <a href="#app">Nebuliton App</a>
+            <a href="#discord">Community Discord</a>
+            <a href="#wallpaper">Wallpaper</a>
+        </div>
+
+        <div class="footer-section">
+            <h3>Folge uns</h3>
+            <a href="#youtube">📺 YouTube</a>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>© 2025 Nebuliton – entwickelt mit ❤️ - Made in Kiel ⚓</p>
+        <p>Website Design by Talonachris, Ruben & Tade</p>
+    </div>
+</footer>
+
+<script>
+    // Create animated starfield
+    function createStars() {
+        const starsContainer = document.getElementById('stars');
+        const numberOfStars = 150;
+
+        for (let i = 0; i < numberOfStars; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.width = Math.random() * 4 + 1 + 'px';
+            star.style.height = star.style.width;
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 120 + '%';
+            star.style.animationDelay = Math.random() * 3 + 's';
+            star.style.animationDuration = `${Math.random() * 3 + 2}s, ${Math.random() * 8 + 6}s`;
+
+            // Add some stars with different colors for variety
+            if (Math.random() > 0.8) {
+                star.style.background = `hsl(${Math.random() * 60 + 200}, 70%, 80%)`;
+            }
+
+            starsContainer.appendChild(star);
+        }
+    }
+
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', function() {
+        createStars();
+    });
+
+    // Add scroll effect to navigation
+    window.addEventListener('scroll', function() {
+        const nav = document.querySelector('nav');
+        if (window.scrollY > 100) {
+            nav.style.background = 'rgba(26, 11, 61, 0.95)';
+        } else {
+            nav.style.background = 'rgba(26, 11, 61, 0.9)';
+        }
+    });
+</script>
+</body>
+</html>
