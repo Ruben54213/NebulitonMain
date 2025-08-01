@@ -54,20 +54,24 @@
             75% { transform: translateY(-8px) translateX(-7px); }
         }
 
-        /* Navigation */
+        /* Modern Navigation */
         nav {
             position: fixed;
             top: 0;
             width: 100%;
             padding: 1rem 0;
-            background: rgba(26, 11, 61, 0.9);
-            backdrop-filter: blur(10px);
+            background: rgba(26, 11, 61, 0.1);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 215, 0, 0.1);
             z-index: 1000;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        nav:hover {
+        nav.scrolled {
             background: rgba(26, 11, 61, 0.95);
+            backdrop-filter: blur(30px);
+            border-bottom: 1px solid rgba(255, 215, 0, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
         }
 
         .nav-container {
@@ -84,11 +88,17 @@
             font-size: 2.2rem;
             font-weight: bold;
             color: #ffd700;
-            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
             flex-shrink: 0;
             display: flex;
             align-items: center;
             gap: 0.7rem;
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.8);
         }
 
         .logo-icon {
@@ -96,12 +106,13 @@
             height: 3rem;
             object-fit: contain;
             filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.3));
+            transition: all 0.3s ease;
         }
 
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 1.5rem;
+            gap: 2rem;
             flex-wrap: nowrap;
             white-space: nowrap;
             position: absolute;
@@ -116,24 +127,31 @@
         .nav-links a {
             color: white;
             text-decoration: none;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            backdrop-filter: blur(10px);
         }
 
         .nav-links a:hover {
             color: #ffd700;
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            background: rgba(255, 215, 0, 0.1);
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.3);
         }
 
         .nav-links a::after {
             content: '';
             position: absolute;
-            bottom: -5px;
-            left: 0;
+            bottom: -8px;
+            left: 50%;
             width: 0;
-            height: 2px;
-            background: #ffd700;
-            transition: width 0.3s ease;
+            height: 3px;
+            background: linear-gradient(90deg, #ffd700, #4ecdc4);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
         }
 
         .nav-links a:hover::after {
@@ -151,29 +169,25 @@
             top: 100%;
             left: 0;
             background: rgba(26, 11, 61, 0.95);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 215, 0, 0.3);
-            border-radius: 8px;
-            min-width: 180px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            min-width: 200px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 80px rgba(255, 215, 0, 0.1);
             z-index: 10000;
-            margin-top: 5px;
-            padding-top: 5px;
+            margin-top: 10px;
+            padding: 10px;
             opacity: 0;
             visibility: hidden;
-            transition: opacity 0.2s ease, visibility 0.2s ease;
+            transform: translateY(-10px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .dropdown:hover .dropdown-menu {
             display: block;
             opacity: 1;
             visibility: visible;
-            transition-delay: 0s;
-        }
-
-        .dropdown-menu:hover {
-            opacity: 1;
-            visibility: visible;
+            transform: translateY(0);
         }
 
         .dropdown-menu a {
@@ -181,18 +195,15 @@
             padding: 12px 16px;
             color: white;
             text-decoration: none;
-            border-radius: 0;
+            border-radius: 10px;
             font-size: 0.9rem;
+            transition: all 0.3s ease;
         }
 
         .dropdown-menu a:hover {
-            background: rgba(255, 215, 0, 0.1);
+            background: rgba(255, 215, 0, 0.2);
             color: #ffd700;
-            transform: none;
-        }
-
-        .dropdown-menu a::after {
-            display: none;
+            transform: translateX(5px);
         }
 
         /* Hero Section */
@@ -411,6 +422,12 @@
             margin-bottom: 1rem;
         }
 
+        .footer-section p {
+            color: white;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+
         .footer-section a {
             color: white;
             text-decoration: none;
@@ -429,6 +446,10 @@
             padding-top: 2rem;
             border-top: 1px solid rgba(78, 205, 196, 0.2);
             opacity: 0.7;
+        }
+
+        .footer-bottom p {
+            margin-bottom: 0.5rem;
         }
 
         /* Discord Widget */
@@ -496,6 +517,29 @@
             border-radius: 15px;
         }
 
+        /* Widget Toggle Button */
+        .widget-toggle {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #4ecdc4, #45b7d1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            z-index: 1001;
+        }
+
+        .widget-toggle:hover {
+            transform: scale(1.15);
+            box-shadow: 0 12px 35px rgba(78, 205, 196, 0.4);
+        }
+
         @media (max-width: 768px) {
             .discord-widget {
                 padding: 1.5rem;
@@ -529,8 +573,8 @@
 <!-- Animated starfield -->
 <div class="stars" id="stars"></div>
 
-<!-- Navigation -->
-<nav>
+<!-- Modern Navigation -->
+<nav id="navbar">
     <div class="nav-container">
         <div class="logo">
             <img src="logo.png" alt="Nebuliton Logo" class="logo-icon">
@@ -678,6 +722,10 @@
 
     <div class="footer-bottom">
         <p>© 2025 Nebuliton – entwickelt mit ❤️ - Made in Kiel ⚓</p>
+    </div>
+
+    <div class="footer-bottom">
+        <p>© 2025 Nebuliton – entwickelt mit ❤️ - Made in Kiel ⚓</p>
         <p>Website Design by Talonachris, Ruben & Tade</p>
     </div>
 </footer>
@@ -707,6 +755,16 @@
         }
     }
 
+    // Enhanced navigation scroll effect
+    function handleNavScroll() {
+        const nav = document.getElementById('navbar');
+        if (window.scrollY > 100) {
+            nav.classList.add('scrolled');
+        } else {
+            nav.classList.remove('scrolled');
+        }
+    }
+
     // Smooth scrolling for navigation links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
@@ -728,13 +786,9 @@
 
     // Add scroll effect to navigation
     window.addEventListener('scroll', function() {
-        const nav = document.querySelector('nav');
-        if (window.scrollY > 100) {
-            nav.style.background = 'rgba(26, 11, 61, 0.95)';
-        } else {
-            nav.style.background = 'rgba(26, 11, 61, 0.9)';
-        }
+        handleNavScroll();
     });
 </script>
+
 </body>
 </html>
