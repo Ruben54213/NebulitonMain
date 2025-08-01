@@ -501,47 +501,72 @@
     }
 
     /* FAQ Section */
-    .faq {
+    .faq-section {
       padding: 5rem 2rem;
-      max-width: 1200px;
+      max-width: 1000px;
       margin: 0 auto;
     }
 
-    .faq h2 {
+    .faq-card {
+      background: rgba(26, 11, 61, 0.8);
+      backdrop-filter: blur(20px);
+      border-radius: 20px;
+      padding: 3rem;
+      border: 1px solid rgba(78, 205, 196, 0.3);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .faq-title {
+      font-size: 2rem;
+      color: #4ecdc4;
+      margin-bottom: 2rem;
       text-align: center;
-      font-size: 2.5rem;
-      margin-bottom: 3rem;
-      color: #ff6b6b;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
     }
 
     .faq-item {
-      background: rgba(26, 11, 61, 0.8);
-      backdrop-filter: blur(15px);
-      border-radius: 15px;
+      border: 1px solid rgba(78, 205, 196, 0.2);
+      border-radius: 10px;
       margin-bottom: 1rem;
-      border: 1px solid rgba(255, 107, 107, 0.2);
       overflow: hidden;
       transition: all 0.3s ease;
     }
 
+    .faq-item:hover {
+      border-color: rgba(78, 205, 196, 0.4);
+    }
+
     .faq-question {
+      background: rgba(15, 26, 61, 0.6);
       padding: 1.5rem;
       cursor: pointer;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      font-weight: bold;
-      color: #ff6b6b;
-      font-size: 1.1rem;
+      gap: 1rem;
       transition: all 0.3s ease;
     }
 
     .faq-question:hover {
-      background: rgba(255, 107, 107, 0.1);
+      background: rgba(15, 26, 61, 0.8);
     }
 
     .faq-icon {
-      font-size: 1.2rem;
+      font-size: 1.5rem;
+      color: #4ecdc4;
+    }
+
+    .faq-question-text {
+      font-weight: bold;
+      color: white;
+      flex: 1;
+    }
+
+    .faq-toggle {
+      font-size: 1.5rem;
+      color: #4ecdc4;
       transition: transform 0.3s ease;
     }
 
@@ -550,16 +575,15 @@
       max-height: 0;
       overflow: hidden;
       transition: all 0.3s ease;
-      opacity: 0;
+      background: rgba(0, 0, 0, 0.2);
     }
 
-    .faq-item.active .faq-answer {
-      padding: 0 1.5rem 1.5rem;
+    .faq-answer.active {
+      padding: 1.5rem;
       max-height: 200px;
-      opacity: 1;
     }
 
-    .faq-item.active .faq-icon {
+    .faq-item.active .faq-toggle {
       transform: rotate(180deg);
     }
 
@@ -885,7 +909,7 @@
     <div class="feature-card">
       <div class="feature-icon">🌐</div>
       <h3>2.5 Gbit/s & IPv4</h3>
-      <p>Jede VM hat einen 2.5 Gbit/s Uplink, eigene IPv4 und bei Wunsch eine Subdomain wie deinserver.nebuliton.com.</p>
+      <p>Jede VM hat einen 2.5 Gbit/s Uplink, eigene IPv4 und bei Wunsch eine Subdomain wie deinserver.nbltn.com.</p>
     </div>
 
     <div class="feature-card">
@@ -999,66 +1023,74 @@
 </section>
 
 <!-- FAQ Section -->
-<section class="faq" id="faq">
-  <h2>❓ Häufig gestellte Fragen</h2>
+<section class="faq-section" id="faq">
+  <div class="faq-card">
+    <h2 class="faq-title">❓ Häufig gestellte Fragen</h2>
 
-  <div class="faq-item">
-    <div class="faq-question" onclick="toggleFaq(this)">
-      <span>Was ist der Unterschied zwischen einem Root-Server und Shared Hosting?</span>
-      <span class="faq-icon">▼</span>
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFAQ(this)">
+        <div class="faq-icon">📋</div>
+        <div class="faq-question-text">Was ist der Unterschied zwischen einem Root-Server und Shared Hosting?</div>
+        <div class="faq-toggle">▼</div>
+      </div>
+      <div class="faq-answer">
+        Bei einem Root-Server erhältst du vollständige Administrator-Rechte und einen eigenen virtuellen Server. Du kannst beliebige Software installieren, eigene Konfigurationen vornehmen und hast garantierte Ressourcen. Shared Hosting teilt sich Ressourcen mit anderen Kunden und bietet weniger Flexibilität.
+      </div>
     </div>
-    <div class="faq-answer">
-      <p>Bei einem Root-Server erhältst du vollständige Administrator-Rechte und einen eigenen virtuellen Server. Du kannst beliebige Software installieren, eigene Konfigurationen vornehmen und hast garantierte Ressourcen. Shared Hosting teilt sich Ressourcen mit anderen Kunden und bietet weniger Flexibilität.</p>
-    </div>
-  </div>
 
-  <div class="faq-item">
-    <div class="faq-question" onclick="toggleFaq(this)">
-      <span>Welches Betriebssystem kann ich installieren?</span>
-      <span class="faq-icon">▼</span>
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFAQ(this)">
+        <div class="faq-icon">🔧</div>
+        <div class="faq-question-text">Welches Betriebssystem kann ich installieren?</div>
+        <div class="faq-toggle">▼</div>
+      </div>
+      <div class="faq-answer">
+        Du kannst jedes Linux-System installieren (Ubuntu, Debian, CentOS, Arch Linux, etc.) sowie Windows Server. Wir bieten auch vorinstallierte Templates für die gängigsten Distributionen an.
+      </div>
     </div>
-    <div class="faq-answer">
-      <p>Du kannst jedes Linux-System installieren (Ubuntu, Debian, CentOS, Arch Linux, etc.) sowie Windows Server. Wir bieten auch vorinstallierte Templates für die gängigsten Distributionen an.</p>
-    </div>
-  </div>
 
-  <div class="faq-item">
-    <div class="faq-question" onclick="toggleFaq(this)">
-      <span>Wie funktioniert das Backup-System?</span>
-      <span class="faq-icon">▼</span>
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFAQ(this)">
+        <div class="faq-icon">💾</div>
+        <div class="faq-question-text">Wie funktioniert das Backup-System?</div>
+        <div class="faq-toggle">▼</div>
+      </div>
+      <div class="faq-answer">
+        Jeder Root-Server kommt mit 3 Backup-Slots. Du kannst jederzeit manuelle Snapshots erstellen oder automatische Backups einrichten. Die Backups werden auf separaten Systemen gespeichert und können mit einem Klick wiederhergestellt werden.
+      </div>
     </div>
-    <div class="faq-answer">
-      <p>Jeder Root-Server kommt mit 3 Backup-Slots. Du kannst jederzeit manuelle Snapshots erstellen oder automatische Backups einrichten. Die Backups werden auf separaten Systemen gespeichert und können mit einem Klick wiederhergestellt werden.</p>
-    </div>
-  </div>
 
-  <div class="faq-item">
-    <div class="faq-question" onclick="toggleFaq(this)">
-      <span>Kann ich meinen Server jederzeit upgraden?</span>
-      <span class="faq-icon">▼</span>
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFAQ(this)">
+        <div class="faq-icon">⚡</div>
+        <div class="faq-question-text">Kann ich meinen Server jederzeit upgraden?</div>
+        <div class="faq-toggle">▼</div>
+      </div>
+      <div class="faq-answer">
+        Ja, alle Pakete sind jederzeit erweiterbar. Du kannst mehr RAM, CPU-Kerne oder Speicherplatz hinzubuchen. Das Upgrade erfolgt meist ohne Downtime über unser Control Panel.
+      </div>
     </div>
-    <div class="faq-answer">
-      <p>Ja, alle Pakete sind jederzeit erweiterbar. Du kannst mehr RAM, CPU-Kerne oder Speicherplatz hinzubuchen. Das Upgrade erfolgt meist ohne Downtime über unser Control Panel.</p>
-    </div>
-  </div>
 
-  <div class="faq-item">
-    <div class="faq-question" onclick="toggleFaq(this)">
-      <span>Wie schnell ist der Support?</span>
-      <span class="faq-icon">▼</span>
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFAQ(this)">
+        <div class="faq-icon">🎧</div>
+        <div class="faq-question-text">Wie schnell ist der Support?</div>
+        <div class="faq-toggle">▼</div>
+      </div>
+      <div class="faq-answer">
+        Unser Support-Team antwortet normalerweise innerhalb von 30 Minuten während der Geschäftszeiten. Für kritische Probleme sind wir auch außerhalb der regulären Zeiten erreichbar. Du kannst uns per Discord, E-Mail oder Ticket kontaktieren.
+      </div>
     </div>
-    <div class="faq-answer">
-      <p>Unser Support-Team antwortet normalerweise innerhalb von 30 Minuten während der Geschäftszeiten. Für kritische Probleme sind wir auch außerhalb der regulären Zeiten erreichbar. Du kannst uns per Discord, E-Mail oder Ticket kontaktieren.</p>
-    </div>
-  </div>
 
-  <div class="faq-item">
-    <div class="faq-question" onclick="toggleFaq(this)">
-      <span>Gibt es eine Mindestvertragslaufzeit?</span>
-      <span class="faq-icon">▼</span>
-    </div>
-    <div class="faq-answer">
-      <p>Nein, alle unsere Root-Server sind monatlich kündbar. Du zahlst nur für die Zeit, die du den Server auch nutzt. Bei längeren Laufzeiten bieten wir attraktive Rabatte an.</p>
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFAQ(this)">
+        <div class="faq-icon">📅</div>
+        <div class="faq-question-text">Gibt es eine Mindestvertragslaufzeit?</div>
+        <div class="faq-toggle">▼</div>
+      </div>
+      <div class="faq-answer">
+        Nein, alle unsere Root-Server sind monatlich kündbar. Du zahlst nur für die Zeit, die du den Server auch nutzt. Bei längeren Laufzeiten bieten wir attraktive Rabatte an.
+      </div>
     </div>
   </div>
 </section>
@@ -1146,19 +1178,21 @@
   }
 
   // FAQ Toggle functionality
-  function toggleFaq(element) {
-    const faqItem = element.parentNode;
-    const isActive = faqItem.classList.contains('active');
+  function toggleFAQ(element) {
+    const faqItem = element.parentElement;
+    const answer = faqItem.querySelector('.faq-answer');
 
-    // Close all FAQ items
+    // Close all other FAQ items
     document.querySelectorAll('.faq-item').forEach(item => {
-      item.classList.remove('active');
+      if (item !== faqItem) {
+        item.classList.remove('active');
+        item.querySelector('.faq-answer').classList.remove('active');
+      }
     });
 
-    // Toggle current item
-    if (!isActive) {
-      faqItem.classList.add('active');
-    }
+    // Toggle current FAQ item
+    faqItem.classList.toggle('active');
+    answer.classList.toggle('active');
   }
 
   // Smooth scrolling for navigation links
