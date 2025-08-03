@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ryzen Root Server - Nebuliton</title>
+  <title>Alle Services - Nebuliton</title>
   <link rel="icon" type="image/png" href="logo.png">
   <style>
     * {
@@ -202,7 +202,6 @@
       position: relative;
     }
 
-    /* Remove the ::after pseudo-element for dropdown menu items */
     .dropdown-menu a::after {
       display: none;
     }
@@ -211,7 +210,6 @@
       background: rgba(255, 215, 0, 0.2);
       color: #ffd700;
       transform: translateX(5px);
-      /* Remove any box-shadow or additional effects that might look like underlines */
       box-shadow: none;
     }
 
@@ -228,19 +226,19 @@
       align-items: center;
       text-align: center;
       position: relative;
-      background: radial-gradient(ellipse at center, rgba(78, 205, 196, 0.2) 0%, transparent 50%);
+      background: radial-gradient(ellipse at center, rgba(255, 215, 0, 0.2) 0%, transparent 50%);
     }
 
     .hero-title {
-      font-size: clamp(3rem, 8vw, 8rem);
+      font-size: clamp(3rem, 8vw, 6rem);
       font-weight: 900;
-      background: linear-gradient(45deg, #4ecdc4, #45b7d1, #ffd700, #4ecdc4);
+      background: linear-gradient(45deg, #ffd700, #4ecdc4, #7289da, #ffd700);
       background-size: 400% 400%;
       -webkit-background-clip: text;
       background-clip: text;
       -webkit-text-fill-color: transparent;
       animation: gradient 3s ease infinite, pulse 2s ease-in-out infinite alternate;
-      text-shadow: 0 0 30px rgba(78, 205, 196, 0.5);
+      text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
       margin-bottom: 1rem;
       letter-spacing: 0.1em;
     }
@@ -264,162 +262,49 @@
       text-transform: uppercase;
     }
 
-    /* Introduction Section */
-    .intro {
-      padding: 5rem 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
-      text-align: center;
-    }
-
-    .intro-card {
-      background: rgba(26, 11, 61, 0.8);
-      backdrop-filter: blur(20px);
-      border-radius: 20px;
-      padding: 3rem;
-      border: 1px solid rgba(78, 205, 196, 0.3);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-      transition: all 0.3s ease;
-      margin-bottom: 3rem;
-    }
-
-    .intro-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
-      border-color: rgba(78, 205, 196, 0.6);
-    }
-
-    .intro h2 {
-      font-size: 2.5rem;
-      color: #4ecdc4;
-      margin-bottom: 1rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-    }
-
-    .intro p {
-      font-size: 1.1rem;
-      line-height: 1.8;
-      margin-bottom: 1.5rem;
-      opacity: 0.9;
-    }
-
-    /* Features Section */
-    .features {
-      padding: 5rem 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .features h2 {
-      text-align: center;
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-      color: #4ecdc4;
-    }
-
-    .features-subtitle {
-      text-align: center;
-      font-size: 1.2rem;
-      margin-bottom: 3rem;
-      opacity: 0.8;
-    }
-
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-      gap: 2rem;
-      margin-bottom: 3rem;
-    }
-
-    .feature-card {
-      background: rgba(26, 11, 61, 0.7);
-      backdrop-filter: blur(15px);
-      border-radius: 15px;
-      padding: 2rem;
-      border: 1px solid rgba(78, 205, 196, 0.2);
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .feature-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, #4ecdc4, #45b7d1, #ffd700, #4ecdc4);
-      transform: scaleX(0);
-      transition: transform 0.3s ease;
-    }
-
-    .feature-card:hover::before {
-      transform: scaleX(1);
-    }
-
-    .feature-card:hover {
-      transform: translateY(-5px);
-      border-color: rgba(78, 205, 196, 0.5);
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-    }
-
-    .feature-icon {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-    }
-
-    .feature-card h3 {
-      font-size: 1.5rem;
-      color: #4ecdc4;
-      margin-bottom: 1rem;
-    }
-
-    .feature-card p {
-      opacity: 0.9;
-      line-height: 1.6;
-    }
-
-    /* Plans Section */
-    .plans {
+    /* Services Section */
+    .services {
       padding: 5rem 2rem;
       max-width: 1400px;
       margin: 0 auto;
     }
 
-    .plans h2 {
+    .section-title {
       text-align: center;
       font-size: 2.5rem;
       margin-bottom: 1rem;
       color: #ffd700;
     }
 
-    .plans-subtitle {
+    .section-subtitle {
       text-align: center;
       font-size: 1.2rem;
-      margin-bottom: 3rem;
+      margin-bottom: 4rem;
       opacity: 0.8;
     }
 
-    .plans-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      margin-bottom: 3rem;
+    .services-category {
+      margin-bottom: 4rem;
     }
 
-    .plans-grid-centered {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 2rem;
-      max-width: 800px;
-      margin: 0 auto 3rem auto;
+    .category-title {
+      font-size: 2rem;
+      color: #4ecdc4;
+      margin-bottom: 2rem;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
     }
 
-    .plan-card {
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+
+    .service-card {
       background: rgba(26, 11, 61, 0.8);
       backdrop-filter: blur(15px);
       border-radius: 20px;
@@ -431,57 +316,47 @@
       text-align: center;
     }
 
-    .plan-card::before {
+    .service-card::before {
       content: '';
       position: absolute;
       top: 0;
       left: 0;
       right: 0;
       height: 3px;
-      background: linear-gradient(90deg, #ffd700, #4ecdc4, #45b7d1, #ffd700);
+      background: linear-gradient(90deg, #ffd700, #4ecdc4, #7289da, #ffd700);
       transform: scaleX(0);
       transition: transform 0.3s ease;
     }
 
-    .plan-card:hover::before {
+    .service-card:hover::before {
       transform: scaleX(1);
     }
 
-    .plan-card:hover {
+    .service-card:hover {
       transform: translateY(-10px);
       border-color: rgba(255, 215, 0, 0.5);
       box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
     }
 
-    .plan-name {
-      font-size: 1.8rem;
-      color: #4ecdc4;
-      margin-bottom: 0.5rem;
-      font-weight: bold;
+    .service-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
     }
 
-    .plan-price {
-      font-size: 2.2rem;
+    .service-name {
+      font-size: 1.5rem;
       color: #ffd700;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1rem;
       font-weight: bold;
     }
 
-    .plan-features {
-      list-style: none;
+    .service-description {
+      opacity: 0.9;
+      line-height: 1.6;
       margin-bottom: 2rem;
     }
 
-    .plan-features li {
-      padding: 0.5rem 0;
-      border-bottom: 1px solid rgba(78, 205, 196, 0.2);
-    }
-
-    .plan-features li:last-child {
-      border-bottom: none;
-    }
-
-    .plan-button {
+    .service-button {
       background: linear-gradient(45deg, #ffd700, #4ecdc4);
       color: #1a0b3d;
       padding: 1rem 2rem;
@@ -495,96 +370,19 @@
       display: inline-block;
     }
 
-    .plan-button:hover {
+    .service-button:hover {
       transform: translateY(-3px);
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
     }
 
-    /* FAQ Section */
-    .faq-section {
-      padding: 5rem 2rem;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-
-    .faq-card {
-      background: rgba(26, 11, 61, 0.8);
-      backdrop-filter: blur(20px);
-      border-radius: 20px;
-      padding: 3rem;
-      border: 1px solid rgba(78, 205, 196, 0.3);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-    }
-
-    .faq-title {
-      font-size: 2rem;
-      color: #4ecdc4;
-      margin-bottom: 2rem;
-      text-align: center;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-    }
-
-    .faq-item {
-      border: 1px solid rgba(78, 205, 196, 0.2);
-      border-radius: 10px;
-      margin-bottom: 1rem;
-      overflow: hidden;
-      transition: all 0.3s ease;
-    }
-
-    .faq-item:hover {
-      border-color: rgba(78, 205, 196, 0.4);
-    }
-
-    .faq-question {
-      background: rgba(15, 26, 61, 0.6);
-      padding: 1.5rem;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      transition: all 0.3s ease;
-    }
-
-    .faq-question:hover {
-      background: rgba(15, 26, 61, 0.8);
-    }
-
-    .faq-icon {
-      font-size: 1.5rem;
-      color: #4ecdc4;
-    }
-
-    .faq-question-text {
-      font-weight: bold;
+    /* External Link Style */
+    .external-link {
+      background: linear-gradient(45deg, #7289da, #5865f2);
       color: white;
-      flex: 1;
     }
 
-    .faq-toggle {
-      font-size: 1.5rem;
-      color: #4ecdc4;
-      transition: transform 0.3s ease;
-    }
-
-    .faq-answer {
-      padding: 0 1.5rem;
-      max-height: 0;
-      overflow: hidden;
-      transition: all 0.3s ease;
-      background: rgba(0, 0, 0, 0.2);
-    }
-
-    .faq-answer.active {
-      padding: 1.5rem;
-      max-height: 200px;
-    }
-
-    .faq-item.active .faq-toggle {
-      transform: rotate(180deg);
+    .external-link:hover {
+      background: linear-gradient(45deg, #5865f2, #7289da);
     }
 
     /* Footer */
@@ -675,7 +473,6 @@
         display: none;
       }
 
-      /* Mobile menu button */
       .mobile-menu-btn {
         display: block;
         background: none;
@@ -694,7 +491,6 @@
         color: #ffd700;
       }
 
-      /* Mobile menu overlay */
       .mobile-menu {
         display: none;
         position: fixed;
@@ -757,21 +553,8 @@
     }
 
     @media (max-width: 768px) {
-      .features-grid {
+      .services-grid {
         grid-template-columns: 1fr;
-      }
-
-      .plans-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .plans-grid-centered {
-        grid-template-columns: 1fr;
-        max-width: 400px;
-      }
-
-      .intro-card {
-        padding: 2rem;
       }
     }
 
@@ -866,244 +649,190 @@
 
 <!-- Hero Section -->
 <section class="hero" id="home">
-  <h1 class="hero-title">Ryzen Root Server</h1>
-  <p class="hero-subtitle">Leistungsstarke Rootserver/KVMs</p>
+  <h1 class="hero-title">Alle Services</h1>
+  <p class="hero-subtitle">Deine Galaxie an Möglichkeiten</p>
 </section>
 
-<!-- Introduction Section -->
-<section class="intro">
-  <div class="intro-card floating">
-    <h2>💻 Root Server bei Nebuliton</h2>
-    <p><strong>Du suchst echte Leistung ohne Kompromisse?</strong> Unsere Rootserver/KVMs bieten dir volle Root-Rechte, hohe Stabilität und exzellente Performance für Hosting, Container, Gameserver und mehr.</p>
+<!-- Services Section -->
+<section class="services" id="services">
+  <h2 class="section-title">🚀 Nebuliton Service-Übersicht</h2>
+  <p class="section-subtitle">Von Hosting bis Gaming – entdecke alle unsere professionellen Services auf einen Blick.</p>
 
-    <p>Bei Nebuliton bekommst du keine Massenware, sondern Leistung vom Feinsten: <strong>Ryzen™ 9 9 9950X3D, DDR5 ECC RAM</strong> und ultraschnelle NVMe-Speicher – gehostet auf unserer eigenen Infrastruktur.</p>
+  <!-- Hosting Services -->
+  <div class="services-category">
+    <h3 class="category-title">🌐 Hosting Services</h3>
+    <div class="services-grid">
+      <div class="service-card floating">
+        <div class="service-icon">💻</div>
+        <h4 class="service-name">Ryzen Root Server</h4>
+        <p class="service-description">Leistungsstarke Root-Server mit AMD Ryzen™ 9 9950X3D, DDR5 ECC RAM und NVMe Storage. Volle Root-Rechte für maximale Flexibilität.</p>
+        <a href="ryzenhosting.html" class="service-button">Mehr erfahren</a>
+      </div>
 
-    <p><strong>Ideal für alle, die mehr wollen als 0815-Hosting</strong> – mit persönlichem Support und flexiblen Optionen.</p>
-  </div>
-</section>
+      <div class="service-card floating">
+        <div class="service-icon">🌍</div>
+        <h4 class="service-name">Domains</h4>
+        <p class="service-description">Sichere dir deine Wunschdomain! Große Auswahl an TLDs, einfache Verwaltung und schnelle DNS-Konfiguration.</p>
+        <a href="domains.html" class="service-button">Mehr erfahren</a>
+      </div>
 
-<!-- Features Section -->
-<section class="features" id="features">
-  <h2>🚀 Deine Vorteile mit Nebuliton Root-Servern</h2>
-  <p class="features-subtitle">Performance, Flexibilität und Support – alles aus einer Hand.</p>
+      <div class="service-card floating">
+        <div class="service-icon">📊</div>
+        <h4 class="service-name">Uptime Kuma</h4>
+        <p class="service-description">Überwache deine Services professionell. Uptime-Monitoring mit Alerts, Dashboards und detaillierter Statistik.</p>
+        <a href="uptimekumahosting.html" class="service-button">Mehr erfahren</a>
+      </div>
 
-  <div class="features-grid">
-    <div class="feature-card">
-      <div class="feature-icon">🚀</div>
-      <h3>Ryzen™ 9 9950X3D Power</h3>
-      <p>Bis zu 8 vCores aus einem Ryzen™ 9 9950X3D – ideal für Webhosting, Gameserver, Docker & mehr.</p>
-    </div>
+      <div class="service-card floating">
+        <div class="service-icon">🎵</div>
+        <h4 class="service-name">Sinus Bot</h4>
+        <p class="service-description">Professioneller TeamSpeak Musik-Bot. Hochqualitäts-Audio, Playlist-Management und einfache Bedienung.</p>
+        <a href="sinusbothosting.html" class="service-button">Mehr erfahren</a>
+      </div>
 
-    <div class="feature-card">
-      <div class="feature-icon">💾</div>
-      <h3>Bis zu 30GB ECC RAM</h3>
-      <p>Hochleistungs-DDR5 ECC RAM sorgt für zuverlässigen Betrieb, auch unter Dauerlast.</p>
-    </div>
+      <div class="service-card floating">
+        <div class="service-icon">🤖</div>
+        <h4 class="service-name">Discord Bots</h4>
+        <p class="service-description">Hosting für Discord Bots aller Art. Node.js, Python, Java – 24/7 online mit automatischen Restarts.</p>
+        <a href="discordbothosting.html" class="service-button">Mehr erfahren</a>
+      </div>
 
-    <div class="feature-card">
-      <div class="feature-icon">⚙️</div>
-      <h3>NVMe Storage & RAID 1</h3>
-      <p>Schneller NVMe-Speicher mit RAID 1 – ideal für Performance & Redundanz in einem.</p>
-    </div>
+      <div class="service-card floating">
+        <div class="service-icon">💻</div>
+        <h4 class="service-name">Code Server</h4>
+        <p class="service-description">Deine persönliche Web-IDE. VS Code im Browser, von überall erreichbar mit professioneller Infrastruktur.</p>
+        <a href="codeserverhosting.html" class="service-button">Mehr erfahren</a>
+      </div>
 
-    <div class="feature-card">
-      <div class="feature-icon">🌐</div>
-      <h3>2.5 Gbit/s & IPv4</h3>
-      <p>Jede VM hat einen 2.5 Gbit/s Uplink, eigene IPv4 und bei Wunsch eine Subdomain wie deinserver.nbltn.com.</p>
-    </div>
+      <div class="service-card floating">
+        <div class="service-icon">🗄️</div>
+        <h4 class="service-name">Datenbank Hosting</h4>
+        <p class="service-description">Zuverlässige MySQL-, PostgreSQL- und Redis-Datenbanken. Hochverfügbar, gesichert und performant.</p>
+        <a href="datenbankhosting.html" class="service-button">Mehr erfahren</a>
+      </div>
 
-    <div class="feature-card">
-      <div class="feature-icon">🛡️</div>
-      <h3>DDoS-Schutz inklusive</h3>
-      <p>Unsere Filter schützen deine Services vor gängigen Angriffen – ganz ohne Aufpreis.</p>
-    </div>
-
-    <div class="feature-card">
-      <div class="feature-icon">📞</div>
-      <h3>Echter Support</h3>
-      <p>Wir sind keine Hotline – sondern selbst Betreiber. Du erreichst uns direkt per Discord oder Mail.</p>
-    </div>
-  </div>
-</section>
-
-<!-- Plans Section -->
-<section class="plans" id="plans">
-  <h2>📦 Root-Server Pakete</h2>
-  <p class="plans-subtitle">Flexibel, leistungsstark und jederzeit erweiterbar – finde dein ideales Root-Setup.</p>
-
-  <!-- First row with 4 plans -->
-  <div class="plans-grid">
-    <div class="plan-card">
-      <h3 class="plan-name">Ryzen Starter</h3>
-      <div class="plan-price">€7,50 / Monat</div>
-      <ul class="plan-features">
-        <li>✓ 1 vCore Ryzen™ 9 9950X3D</li>
-        <li>✓ 6 GB DDR5 ECC RAM</li>
-        <li>✓ 25 GB NVMe RAID 1</li>
-        <li>✓ 2.5 Gbit/s Uplink</li>
-        <li>✓ IPv4 & Subdomain</li>
-        <li>✓ 3 Backup-Slots</li>
-      </ul>
-      <a href="https://cp.nebuliton.io/index.php?rp=/store/rootserver/ryzen-mini" target="_blank" class="plan-button">Jetzt bestellen</a>
-    </div>
-
-    <div class="plan-card">
-      <h3 class="plan-name">Ryzen Basic</h3>
-      <div class="plan-price">€10,99 / Monat</div>
-      <ul class="plan-features">
-        <li>✓ 2 vCores Ryzen™ 9 9950X3D</li>
-        <li>✓ 8 GB DDR5 ECC RAM</li>
-        <li>✓ 45 GB NVMe RAID 1</li>
-        <li>✓ 2.5 Gbit/s Uplink</li>
-        <li>✓ IPv4 & Subdomain</li>
-        <li>✓ 3 Backup-Slots</li>
-      </ul>
-      <a href="https://cp.nebuliton.io/index.php?rp=/store/rootserver/ryzen-standard" target="_blank" class="plan-button">Jetzt bestellen</a>
-    </div>
-
-    <div class="plan-card">
-      <h3 class="plan-name">Ryzen Standard</h3>
-      <div class="plan-price">€15,99 / Monat</div>
-      <ul class="plan-features">
-        <li>✓ 3 vCores Ryzen™ 9 9950X3D</li>
-        <li>✓ 12 GB DDR5 ECC RAM</li>
-        <li>✓ 60 GB NVMe RAID 1</li>
-        <li>✓ 2.5 Gbit/s Uplink</li>
-        <li>✓ IPv4 & Subdomain</li>
-        <li>✓ 3 Backup-Slots</li>
-      </ul>
-      <a href="https://cp.nebuliton.io/index.php?rp=/store/rootserver/ryzen-pre" target="_blank" class="plan-button">Jetzt bestellen</a>
-    </div>
-
-    <div class="plan-card">
-      <h3 class="plan-name">Ryzen Advanced</h3>
-      <div class="plan-price">€18,99 / Monat</div>
-      <ul class="plan-features">
-        <li>✓ 4 vCores Ryzen™ 9 9950X3D</li>
-        <li>✓ 14 GB DDR5 ECC RAM</li>
-        <li>✓ 70 GB NVMe RAID 1</li>
-        <li>✓ 2.5 Gbit/s Uplink</li>
-        <li>✓ IPv4 & Subdomain</li>
-        <li>✓ 3 Backup-Slots</li>
-      </ul>
-      <a href="https://cp.nebuliton.io/index.php?rp=/store/rootserver/ryzen-advanced" target="_blank" class="plan-button">Jetzt bestellen</a>
+      <div class="service-card floating">
+        <div class="service-icon">🏢</div>
+        <h4 class="service-name">Dedicated Server</h4>
+        <p class="service-description">Exklusive Hardware nur für dich. Maximale Performance, vollständige Kontrolle und dedizierte Ressourcen.</p>
+        <a href="dedihosting.html" class="service-button">Mehr erfahren</a>
+      </div>
     </div>
   </div>
 
-  <!-- Second row with 2 centered plans -->
-  <div class="plans-grid-centered">
-    <div class="plan-card">
-      <h3 class="plan-name">Ryzen Large</h3>
-      <div class="plan-price">€26,99 / Monat</div>
-      <ul class="plan-features">
-        <li>✓ 8 vCores Ryzen™ 9 9950X3D</li>
-        <li>✓ 22 GB DDR5 ECC RAM</li>
-        <li>✓ 100 GB NVMe RAID 1</li>
-        <li>✓ 2.5 Gbit/s Uplink</li>
-        <li>✓ IPv4 & Subdomain</li>
-        <li>✓ 3 Backup-Slots</li>
-      </ul>
-      <a href="https://cp.nebuliton.io/index.php?rp=/store/rootserver/ryzen-large" target="_blank" class="plan-button">Jetzt bestellen</a>
-    </div>
+  <!-- Game Hosting Services -->
+  <div class="services-category">
+    <h3 class="category-title">🎮 Game Hosting</h3>
+    <div class="services-grid">
+      <div class="service-card floating">
+        <div class="service-icon">⛏️</div>
+        <h4 class="service-name">Minecraft</h4>
+        <p class="service-description">Minecraft Server für jede Größe. Vanilla, Forge, Fabric, Paper – mit Mod-Support und automatischen Backups.</p>
+        <a href="minecraftgame.html" class="service-button">Mehr erfahren</a>
+      </div>
 
-    <div class="plan-card">
-      <h3 class="plan-name">Ryzen Elite</h3>
-      <div class="plan-price">€35.99 / Monat</div>
-      <ul class="plan-features">
-        <li>✓ 8 vCores Ryzen™ 9 9950X3D</li>
-        <li>✓ 30 GB DDR5 ECC RAM</li>
-        <li>✓ 120 GB NVMe RAID 1</li>
-        <li>✓ 2.5 Gbit/s Uplink</li>
-        <li>✓ IPv4 & Subdomain</li>
-        <li>✓ 3 Backup-Slots</li>
-      </ul>
-      <a href="https://cp.nebuliton.io/index.php?rp=/store/rootserver/ryzen-elite" target="_blank" class="plan-button">Jetzt bestellen</a>
-    </div>
-  </div>
-</section>
+      <div class="service-card floating">
+        <div class="service-icon">🔥</div>
+        <h4 class="service-name">Rust</h4>
+        <p class="service-description">Rust Game Server mit hoher Performance. Schnelle Ladezeiten, Anti-Cheat und regelmäßige Updates.</p>
+        <a href="rustgame.html" class="service-button">Mehr erfahren</a>
+      </div>
 
-<!-- FAQ Section -->
-<section class="faq-section" id="faq">
-  <div class="faq-card">
-    <h2 class="faq-title">❓ Häufig gestellte Fragen</h2>
+      <div class="service-card floating">
+        <div class="service-icon">🏭</div>
+        <h4 class="service-name">Satisfactory</h4>
+        <p class="service-description">Satisfactory Dedicated Server. Baue mit Freunden riesige Fabriken ohne Limits und Lag-frei.</p>
+        <a href="satisfactorygame.html" class="service-button">Mehr erfahren</a>
+      </div>
 
-    <div class="faq-item">
-      <div class="faq-question" onclick="toggleFAQ(this)">
-        <div class="faq-icon">📋</div>
-        <div class="faq-question-text">Was ist der Unterschied zwischen einem Root-Server und Shared Hosting?</div>
-        <div class="faq-toggle">▼</div>
+      <div class="service-card floating">
+        <div class="service-icon">🚗</div>
+        <h4 class="service-name">GTA FiveM</h4>
+        <p class="service-description">FiveM Server für GTA V Roleplay. Custom Scripts, hohe Spielerzahl und stabile Performance.</p>
+        <a href="fivemgame.html" class="service-button">Mehr erfahren</a>
       </div>
-      <div class="faq-answer">
-        Bei einem Root-Server erhältst du vollständige Administrator-Rechte und einen eigenen virtuellen Server. Du kannst beliebige Software installieren, eigene Konfigurationen vornehmen und hast garantierte Ressourcen. Shared Hosting teilt sich Ressourcen mit anderen Kunden und bietet weniger Flexibilität.
-      </div>
-    </div>
 
-    <div class="faq-item">
-      <div class="faq-question" onclick="toggleFAQ(this)">
-        <div class="faq-icon">🔧</div>
-        <div class="faq-question-text">Welches Betriebssystem kann ich installieren?</div>
-        <div class="faq-toggle">▼</div>
+      <div class="service-card floating">
+        <div class="service-icon">🌍</div>
+        <h4 class="service-name">Terraria</h4>
+        <p class="service-description">Terraria Server für Abenteuer mit Freunden. Alle Welten, Mods und Custom-Content unterstützt.</p>
+        <a href="terrariagame.html" class="service-button">Mehr erfahren</a>
       </div>
-      <div class="faq-answer">
-        Du kannst jedes Linux-System installieren (Ubuntu, Debian, CentOS, Arch Linux, etc.) sowie Windows Server. Wir bieten auch vorinstallierte Templates für die gängigsten Distributionen an.
-      </div>
-    </div>
 
-    <div class="faq-item">
-      <div class="faq-question" onclick="toggleFAQ(this)">
-        <div class="faq-icon">💾</div>
-        <div class="faq-question-text">Wie funktioniert das Backup-System?</div>
-        <div class="faq-toggle">▼</div>
-      </div>
-      <div class="faq-answer">
-        Jeder Root-Server kommt mit 3 Backup-Slots. Du kannst jederzeit manuelle Snapshots erstellen oder automatische Backups einrichten. Die Backups werden auf separaten Systemen gespeichert und können mit einem Klick wiederhergestellt werden.
-      </div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-question" onclick="toggleFAQ(this)">
-        <div class="faq-icon">⚡</div>
-        <div class="faq-question-text">Kann ich meinen Server jederzeit upgraden?</div>
-        <div class="faq-toggle">▼</div>
-      </div>
-      <div class="faq-answer">
-        Ja, alle Pakete sind jederzeit erweiterbar. Du kannst mehr RAM, CPU-Kerne oder Speicherplatz hinzubuchen. Das Upgrade erfolgt meist ohne Downtime über unser Control Panel.
-      </div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-question" onclick="toggleFAQ(this)">
-        <div class="faq-icon">🎧</div>
-        <div class="faq-question-text">Wie schnell ist der Support?</div>
-        <div class="faq-toggle">▼</div>
-      </div>
-      <div class="faq-answer">
-        Unser Support-Team antwortet normalerweise innerhalb von 30 Minuten während der Geschäftszeiten. Für kritische Probleme sind wir auch außerhalb der regulären Zeiten erreichbar. Du kannst uns per Discord, E-Mail oder Ticket kontaktieren.
-      </div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-question" onclick="toggleFAQ(this)">
-        <div class="faq-icon">📅</div>
-        <div class="faq-question-text">Gibt es eine Mindestvertragslaufzeit?</div>
-        <div class="faq-toggle">▼</div>
-      </div>
-      <div class="faq-answer">
-        Nein, alle unsere Root-Server sind monatlich kündbar. Du zahlst nur für die Zeit, die du den Server auch nutzt. Bei längeren Laufzeiten bieten wir attraktive Rabatte an.
+      <div class="service-card floating">
+        <div class="service-icon">⚙️</div>
+        <h4 class="service-name">Factorio</h4>
+        <p class="service-description">Factorio Dedicated Server. Baue komplexe Fabriken mit Multiplayer-Support und Mod-Kompatibilität.</p>
+        <a href="factorio.html" class="service-button">Mehr erfahren</a>
       </div>
     </div>
   </div>
-</section>
 
-<!-- Additional Info Section -->
-<section class="intro">
-  <div class="intro-card">
-    <h2>🎯 Warum Nebuliton Root-Server?</h2>
-    <p>Unsere Root-Server laufen auf modernen <strong>AMD Ryzen™ 9 9950X3D</strong> Prozessoren mit bis zu 8 vCores pro VM. Kombiniert mit <strong>DDR5 ECC RAM</strong> und blitzschnellen <strong>NVMe SSDs im RAID 1</strong> Verbund erhältst du maximale Performance und Ausfallsicherheit.</p>
+  <!-- Apps & Tools -->
+  <div class="services-category">
+    <h3 class="category-title">📱 Apps & Tools</h3>
+    <div class="services-grid">
+      <div class="service-card floating">
+        <div class="service-icon">📈</div>
+        <h4 class="service-name">PulseView</h4>
+        <p class="service-description">Monitoring und Analytics für deine Server. Detaillierte Einblicke in Performance, Uptime und Ressourcenverbrauch.</p>
+        <a href="pulseviewapp.html" class="service-button">Mehr erfahren</a>
+      </div>
 
-    <p>Mit <strong>2.5 Gbit/s Uplinks</strong> und eigenem <strong>DDoS-Schutz</strong> sind deine Anwendungen bestens gerüstet. Egal ob Webserver, Gameserver, Docker-Container oder Entwicklungsumgebungen – unsere Server meistern jede Aufgabe.</p>
+      <div class="service-card floating">
+        <div class="service-icon">📱</div>
+        <h4 class="service-name">Nebuliton App</h4>
+        <p class="service-description">Mobile App für die Verwaltung deiner Services. Server-Status, Logs und Kontrolle direkt vom Smartphone.</p>
+        <a href="nebulitonapp.html" class="service-button">Mehr erfahren</a>
+      </div>
+    </div>
+  </div>
 
-    <p><strong>Jetzt starten und die Leistung spüren!</strong></p>
+  <!-- Customer Area & Links -->
+  <div class="services-category">
+    <h3 class="category-title">👤 Kunden Bereich</h3>
+    <div class="services-grid">
+      <div class="service-card floating">
+        <div class="service-icon">🎛️</div>
+        <h4 class="service-name">Server Panel</h4>
+        <p class="service-description">Verwalte deine Server, starte/stoppe Services, überwache Ressourcen und konfiguriere Settings direkt im Browser.</p>
+        <a href="https://panel.nebuliton.io/" target="_blank" class="service-button external-link">Panel öffnen</a>
+      </div>
+
+      <div class="service-card floating">
+        <div class="service-icon">⚙️</div>
+        <h4 class="service-name">Verwaltung</h4>
+        <p class="service-description">Rechnungen, Bestellungen, Support-Tickets und Account-Verwaltung. Dein zentraler Kundencenter.</p>
+        <a href="https://cp.nebuliton.io/" target="_blank" class="service-button external-link">Verwaltung öffnen</a>
+      </div>
+
+      <div class="service-card floating">
+        <div class="service-icon">📊</div>
+        <h4 class="service-name">Status</h4>
+        <p class="service-description">Live-Status aller Nebuliton Services. Uptime, Wartungen und System-Informationen in Echtzeit.</p>
+        <a href="https://status.nebuliton.de/" target="_blank" class="service-button external-link">Status prüfen</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Community & Info -->
+  <div class="services-category">
+    <h3 class="category-title">🌟 Community & Info</h3>
+    <div class="services-grid">
+      <div class="service-card floating">
+        <div class="service-icon">💬</div>
+        <h4 class="service-name">Community</h4>
+        <p class="service-description">Tritt unserer Community bei! Austausch, Support, Updates und Events rund um Nebuliton Services.</p>
+        <a href="community.html" class="service-button">Zur Community</a>
+      </div>
+
+      <div class="service-card floating">
+        <div class="service-icon">ℹ️</div>
+        <h4 class="service-name">Über uns</h4>
+        <p class="service-description">Erfahre mehr über das Nebuliton Team, unsere Mission und die Technologie hinter unseren Services.</p>
+        <a href="about.html" class="service-button">Über uns</a>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1177,24 +906,6 @@
     }
   }
 
-  // FAQ Toggle functionality
-  function toggleFAQ(element) {
-    const faqItem = element.parentElement;
-    const answer = faqItem.querySelector('.faq-answer');
-
-    // Close all other FAQ items
-    document.querySelectorAll('.faq-item').forEach(item => {
-      if (item !== faqItem) {
-        item.classList.remove('active');
-        item.querySelector('.faq-answer').classList.remove('active');
-      }
-    });
-
-    // Toggle current FAQ item
-    faqItem.classList.toggle('active');
-    answer.classList.toggle('active');
-  }
-
   // Smooth scrolling for navigation links
   document.addEventListener('DOMContentLoaded', function() {
     createStars();
@@ -1212,6 +923,12 @@
           });
         }
       });
+    });
+
+    // Add staggered animation to service cards
+    const serviceCards = document.querySelectorAll('.service-card');
+    serviceCards.forEach((card, index) => {
+      card.style.animationDelay = `${index * 0.1}s`;
     });
   });
 

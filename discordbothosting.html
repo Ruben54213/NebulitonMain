@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nebuliton - Serverschmiede der Galaxien</title>
+    <title>Discord Bot Hosting - Nebuliton</title>
     <link rel="icon" type="image/png" href="logo.png">
     <style>
         * {
@@ -94,6 +94,7 @@
             align-items: center;
             gap: 0.7rem;
             transition: all 0.3s ease;
+            text-decoration: none;
         }
 
         .logo:hover {
@@ -201,7 +202,6 @@
             position: relative;
         }
 
-        /* Remove the ::after pseudo-element for dropdown menu items */
         .dropdown-menu a::after {
             display: none;
         }
@@ -210,8 +210,11 @@
             background: rgba(255, 215, 0, 0.2);
             color: #ffd700;
             transform: translateX(5px);
-            /* Remove any box-shadow or additional effects that might look like underlines */
             box-shadow: none;
+        }
+
+        .mobile-menu-btn {
+            display: none;
         }
 
         /* Hero Section */
@@ -223,19 +226,19 @@
             align-items: center;
             text-align: center;
             position: relative;
-            background: radial-gradient(ellipse at center, rgba(255, 107, 107, 0.2) 0%, transparent 50%);
+            background: radial-gradient(ellipse at center, rgba(114, 137, 218, 0.2) 0%, transparent 50%);
         }
 
         .hero-title {
-            font-size: clamp(3rem, 8vw, 8rem);
+            font-size: clamp(3rem, 8vw, 6rem);
             font-weight: 900;
-            background: linear-gradient(45deg, #ffd700, #ff6b6b, #4ecdc4, #45b7d1);
+            background: linear-gradient(45deg, #7289da, #5865f2, #4ecdc4, #7289da);
             background-size: 400% 400%;
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
             animation: gradient 3s ease infinite, pulse 2s ease-in-out infinite alternate;
-            text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+            text-shadow: 0 0 30px rgba(114, 137, 218, 0.5);
             margin-bottom: 1rem;
             letter-spacing: 0.1em;
         }
@@ -259,33 +262,34 @@
             text-transform: uppercase;
         }
 
-        /* Welcome Section */
-        .welcome {
+        /* Introduction Section */
+        .intro {
             padding: 5rem 2rem;
             max-width: 1200px;
             margin: 0 auto;
             text-align: center;
         }
 
-        .welcome-card {
+        .intro-card {
             background: rgba(26, 11, 61, 0.8);
             backdrop-filter: blur(20px);
             border-radius: 20px;
             padding: 3rem;
-            border: 1px solid rgba(255, 215, 0, 0.3);
+            border: 1px solid rgba(114, 137, 218, 0.3);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
             transition: all 0.3s ease;
+            margin-bottom: 3rem;
         }
 
-        .welcome-card:hover {
+        .intro-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
-            border-color: rgba(255, 215, 0, 0.6);
+            border-color: rgba(114, 137, 218, 0.6);
         }
 
-        .welcome h2 {
+        .intro h2 {
             font-size: 2.5rem;
-            color: #ffd700;
+            color: #7289da;
             margin-bottom: 1rem;
             display: flex;
             align-items: center;
@@ -293,155 +297,47 @@
             gap: 0.5rem;
         }
 
-        .welcome p {
+        .intro p {
             font-size: 1.1rem;
             line-height: 1.8;
             margin-bottom: 1.5rem;
             opacity: 0.9;
         }
 
-        .cta-button {
-            display: inline-block;
-            padding: 1rem 2rem;
-            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.5s;
-        }
-
-        .cta-button:hover::before {
-            left: 100%;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-        }
-
-        /* Services Section */
-        .services {
+        /* Features Section */
+        .features {
             padding: 5rem 2rem;
             max-width: 1200px;
             margin: 0 auto;
         }
 
-        .services h2 {
+        .features h2 {
             text-align: center;
             font-size: 2.5rem;
             margin-bottom: 1rem;
             color: #ffd700;
         }
 
-        .services-subtitle {
+        .features-subtitle {
             text-align: center;
             font-size: 1.2rem;
             margin-bottom: 3rem;
             opacity: 0.8;
         }
 
-        .services-grid {
+        .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
             margin-bottom: 3rem;
         }
 
-        .service-card {
+        .feature-card {
             background: rgba(26, 11, 61, 0.7);
             backdrop-filter: blur(15px);
             border-radius: 15px;
             padding: 2rem;
-            border: 1px solid rgba(255, 215, 0, 0.2);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, #ff6b6b, #4ecdc4, #45b7d1, #ffd700);
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-
-        .service-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .service-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(255, 215, 0, 0.5);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        .service-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .service-card h3 {
-            font-size: 1.5rem;
-            color: #ffd700;
-            margin-bottom: 1rem;
-        }
-
-        .service-card p {
-            opacity: 0.9;
-            line-height: 1.6;
-        }
-
-        .services-cta {
-            text-align: center;
-            margin-top: 3rem;
-        }
-
-        /* Community Section */
-        .community {
-            padding: 5rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .community h2 {
-            font-size: 2.5rem;
-            color: #ffd700;
-            margin-bottom: 1rem;
-        }
-
-        .community-features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin: 3rem 0;
-        }
-
-        .feature-card {
-            background: rgba(26, 11, 61, 0.6);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
-            padding: 2rem;
-            border: 1px solid rgba(255, 215, 0, 0.2);
+            border: 1px solid rgba(114, 137, 218, 0.2);
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
@@ -454,7 +350,7 @@
             left: 0;
             right: 0;
             height: 3px;
-            background: linear-gradient(90deg, #ff6b6b, #4ecdc4, #45b7d1, #ffd700);
+            background: linear-gradient(90deg, #7289da, #5865f2, #4ecdc4, #7289da);
             transform: scaleX(0);
             transition: transform 0.3s ease;
         }
@@ -465,17 +361,225 @@
 
         .feature-card:hover {
             transform: translateY(-5px);
-            border-color: rgba(255, 215, 0, 0.4);
+            border-color: rgba(114, 137, 218, 0.5);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
         }
 
         .feature-icon {
-            font-size: 2rem;
+            font-size: 2.5rem;
             margin-bottom: 1rem;
         }
 
         .feature-card h3 {
+            font-size: 1.5rem;
             color: #ffd700;
             margin-bottom: 1rem;
+        }
+
+        .feature-card p {
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        /* Plans Section */
+        .plans {
+            padding: 5rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .plans h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #ffd700;
+        }
+
+        .plans-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            opacity: 0.8;
+        }
+
+        .plans-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .plan-card {
+            background: rgba(26, 11, 61, 0.8);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(114, 137, 218, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .plan-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #7289da, #5865f2, #4ecdc4, #7289da);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .plan-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .plan-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(114, 137, 218, 0.5);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .plan-name {
+            font-size: 1.8rem;
+            color: #7289da;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .plan-price {
+            font-size: 2.2rem;
+            color: #ffd700;
+            margin-bottom: 1.5rem;
+            font-weight: bold;
+        }
+
+        .plan-features {
+            list-style: none;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .plan-features li {
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .plan-features li::before {
+            content: '✓';
+            color: #28a745;
+            font-weight: bold;
+        }
+
+        .plan-button {
+            background: linear-gradient(45deg, #ffd700, #7289da);
+            color: #1a0b3d;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .plan-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 5rem 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .faq-card {
+            background: rgba(26, 11, 61, 0.8);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 3rem;
+            border: 1px solid rgba(114, 137, 218, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .faq-title {
+            font-size: 2rem;
+            color: #7289da;
+            margin-bottom: 2rem;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .faq-item {
+            border: 1px solid rgba(114, 137, 218, 0.2);
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            border-color: rgba(114, 137, 218, 0.4);
+        }
+
+        .faq-question {
+            background: rgba(15, 26, 61, 0.6);
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: rgba(15, 26, 61, 0.8);
+        }
+
+        .faq-icon {
+            font-size: 1.5rem;
+            color: #7289da;
+        }
+
+        .faq-question-text {
+            font-weight: bold;
+            color: white;
+            flex: 1;
+        }
+
+        .faq-toggle {
+            font-size: 1.5rem;
+            color: #7289da;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .faq-answer.active {
+            padding: 1.5rem;
+            max-height: 300px;
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(180deg);
         }
 
         /* Footer */
@@ -566,7 +670,6 @@
                 display: none;
             }
 
-            /* Mobile menu button */
             .mobile-menu-btn {
                 display: block;
                 background: none;
@@ -585,7 +688,6 @@
                 color: #ffd700;
             }
 
-            /* Mobile menu overlay */
             .mobile-menu {
                 display: none;
                 position: fixed;
@@ -647,16 +749,16 @@
             }
         }
 
-        .mobile-menu-btn {
-            display: none;
-        }
-
         @media (max-width: 768px) {
-            .services-grid {
+            .features-grid {
                 grid-template-columns: 1fr;
             }
 
-            .welcome-card {
+            .plans-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .intro-card, .faq-card {
                 padding: 2rem;
             }
         }
@@ -679,17 +781,17 @@
 <!-- Modern Navigation -->
 <nav id="navbar">
     <div class="nav-container">
-        <div class="logo">
+        <a href="index.html" class="logo">
             <img src="logo.png" alt="Nebuliton Logo" class="logo-icon">
             NEBULITON
-        </div>
+        </a>
         <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
             <li class="dropdown">
                 <a href="#">Hosting</a>
                 <div class="dropdown-menu">
                     <a href="ryzenhosting.html">Ryzen Root</a>
-                    <a href="domains.html">Domains</a>
+                    <a href="domainshosting.html">Domains</a>
                     <a href="uptimekumahosting.html">Uptime Kuma</a>
                     <a href="sinusbothosting.html">Sinus Bot</a>
                     <a href="discordbothosting.html">Discord Bots</a>
@@ -752,115 +854,205 @@
 
 <!-- Hero Section -->
 <section class="hero" id="home">
-    <h1 class="hero-title">NEBULITON</h1>
-    <p class="hero-subtitle">Serverschmiede der Galaxien</p>
+    <h1 class="hero-title">Discord Bot Hosting</h1>
+    <p class="hero-subtitle">Professionelle Bot-Infrastruktur</p>
 </section>
 
-<!-- Welcome Section -->
-<section class="welcome">
-    <div class="welcome-card floating">
-        <h2>✨ Willkommen bei Nebuliton</h2>
-        <p><strong>Serverschmiede der Galaxien</strong></p>
-        <p>Bei uns bekommst du deinen Platz im Universum!</p>
-        <p>Egal ob <strong>Minecraft</strong>, <strong>Rust</strong> oder dein eigener <strong>Discord-Bot</strong> – bei Nebuliton bekommst du blitzschnelles Hosting auf <strong>leistungsstarken Ryzen-Servern</strong>, made in Kiel .</p>
-        <p><strong>Du willst mehr wissen? 🚀</strong><br>
-            Scroll nach unten und entdecke, was wir alles anbieten!</p>
-        <a href="#services" class="cta-button">🚀 Unsere Angebote entdecken</a>
-    </div>
-</section>
+<!-- Introduction Section -->
+<section class="intro">
+    <div class="intro-card floating">
+        <h2>🤖 Discord Bots bei Nebuliton</h2>
+        <p><strong>Starte deinen eigenen Discord Bot auf professioneller Infrastruktur. Ideal für Musikbots, Moderation, Logging oder Custom Bots – ohne Limits.</strong></p>
 
-<!-- Services Section -->
-<section class="services" id="services">
-    <h2>🚀 Was Nebuliton Dir bietet</h2>
-    <p class="services-subtitle">Hosting, Tools & Community – alles aus einer galaktischen Hand.</p>
+        <p>Wir bieten dir dedizierte Ressourcen, blitzschnelles Hosting und ein Team, das weiß, wie Discord funktioniert.</p>
 
-    <div class="services-grid">
-        <div class="service-card">
-            <div class="service-icon">⚙️</div>
-            <h3>Gameserver Hosting</h3>
-            <p>Schnelle, sichere und leistungsstarke Server für beliebte Spiele – ideal für dich und deine Community.</p>
-        </div>
-
-        <div class="service-card">
-            <div class="service-icon">🤖</div>
-            <h3>Bot- & App-Hosting</h3>
-            <p>Betreibe deine Discord-Bots, Tools oder Anwendungen zuverlässig auf unseren Systemen.</p>
-        </div>
-
-        <div class="service-card">
-            <div class="service-icon">🎧</div>
-            <h3>Musik & Voice-Dienste</h3>
-            <p>Sinusbot Hosting für Musikstreams & Tools für Community-Kommunikation – glasklar & stabil.</p>
-        </div>
-
-        <div class="service-card">
-            <div class="service-icon">📊</div>
-            <h3>Status & Monitoring</h3>
-            <p>Behalte alle deine Dienste im Blick – mit einfach einrichtbaren Statusseiten und Checks.</p>
-        </div>
-
-        <div class="service-card">
-            <div class="service-icon">📱</div>
-            <h3>Eigene Native Apps</h3>
-            <p>iOS & Android Apps für volle Kontrolle – ob Servermanagement oder Monitoring von unterwegs.</p>
-        </div>
-
-        <div class="service-card">
-            <div class="service-icon">🌐</div>
-            <h3>Community & Support</h3>
-            <p>Wir sind für dich da – mit aktiver Discord-Community, Guides, Tipps und persönlichem Support.</p>
-        </div>
-    </div>
-
-    <div class="services-cta">
-        <a href="#overview" class="cta-button">⚡ Zur Angebots-Übersicht</a>
+        <p><strong>Perfekt für Node.js, Python, Java & mehr – bring deinen Bot in die Cloud und online auf deinen Server.</strong></p>
     </div>
 </section>
 
-<!-- Community Section -->
-<section class="community" id="community">
-    <h2>🪐 Willkommen bei Nebula</h2>
-    <p>Nebula ist unsere Community – ein Ort für gemeinsame Abenteuer, kreative Welten und echte Freundschaft. Hier bist du nicht nur Spieler, sondern Teil von etwas Größerem.</p>
+<!-- Features Section -->
+<section class="features" id="features">
+    <h2>🛠️ Deine Vorteile mit Nebuliton Bot-Hosting</h2>
+    <p class="features-subtitle">Performance, Flexibilität und Support – alles aus einer Hand.</p>
 
-    <div class="community-features">
+    <div class="features-grid">
         <div class="feature-card">
-            <div class="feature-icon">🏠</div>
-            <h3>Eigene Server</h3>
-            <p>Spiele auf Servern, die von der Community für die Community gemacht wurden – fair, ohne Pay-to-Win.</p>
+            <div class="feature-icon">🤖</div>
+            <h3>Für kleine & große Bots</h3>
+            <p>Ob einfacher Info-Bot oder großer Musik- und Admin-Bot – unsere Pakete passen sich deinem Projekt an.</p>
         </div>
 
         <div class="feature-card">
-            <div class="feature-icon">🎨</div>
-            <h3>Kreative Freiheit</h3>
-            <p>Baue, gestalte, entdecke – unsere Welten wachsen durch deine Ideen.</p>
+            <div class="feature-icon">⚡</div>
+            <h3>Ryzen Power</h3>
+            <p>Unsere Bots laufen auf AMD Ryzen™ 9 9950X3D – ideal für schnelle Reaktionen & flüssige Performance.</p>
         </div>
 
         <div class="feature-card">
-            <div class="feature-icon">💬</div>
-            <h3>Aktiver Discord</h3>
-            <p>Freundlicher Austausch, schnelle Hilfe & entspannte Gespräche rund um die Uhr.</p>
+            <div class="feature-icon">💾</div>
+            <h3>NVMe Speicher</h3>
+            <p>Blitzschnelle Ladezeiten für deine Bot-Daten und Logs – NVMe SSDs sorgen für optimale Performance.</p>
         </div>
 
         <div class="feature-card">
-            <div class="feature-icon">🛡️</div>
-            <h3>Fair & Sicher</h3>
-            <p>Moderation mit Herz: Wir sorgen für eine faire, respektvolle Atmosphäre ohne toxisches Verhalten.</p>
+            <div class="feature-icon">🌐</div>
+            <h3>24/7 Uptime</h3>
+            <p>Dein Bot läuft rund um die Uhr stabil. Automatische Restarts und Monitoring inklusive.</p>
         </div>
 
         <div class="feature-card">
-            <div class="feature-icon">👥</div>
-            <h3>Gemeinschaft zählt</h3>
-            <p>Hier zählt jede Stimme – bring dich ein, sei kreativ und gestalte mit uns die Zukunft von Nebula.</p>
+            <div class="feature-icon">🔧</div>
+            <h3>Alle Sprachen</h3>
+            <p>Node.js, Python, Java, C# – installiere und nutze jede Programmiersprache für deinen Bot.</p>
         </div>
 
         <div class="feature-card">
-            <div class="feature-icon">🚀</div>
-            <h3>Teil von Nebuliton</h3>
-            <p>Nebula ist der Community-Zweig von Nebuliton – mit direktem Draht zum Hosting-Team & exklusiven Vorteilen.</p>
+            <div class="feature-icon">📞</div>
+            <h3>Discord Support</h3>
+            <p>Unser Team kennt Discord von A bis Z. Support direkt von Bot-Entwicklern für Bot-Entwickler.</p>
         </div>
     </div>
+</section>
 
-    <a href="https://discord.gg/nebuliton" target="_blank" rel="noopener noreferrer" class="cta-button">🎮 Jetzt Teil werden auf Discord</a>
+<!-- Plans Section -->
+<section class="plans" id="plans">
+    <h2>📦 Discord Bot Pakete</h2>
+    <p class="plans-subtitle">Von kleinen Hobby-Bots bis zu großen Community-Projekten – wir haben das richtige Paket.</p>
+
+    <div class="plans-grid">
+        <div class="plan-card">
+            <h3 class="plan-name">Bot Mini</h3>
+            <div class="plan-price">€3,99 / Monat</div>
+            <ul class="plan-features">
+                <li>512 MB RAM</li>
+                <li>1 vCore Ryzen™ 9 9950X3D</li>
+                <li>5 GB NVMe Speicher</li>
+                <li>24/7 Online</li>
+                <li>Automatische Restarts</li>
+                <li>Discord Support</li>
+                <li>Node.js, Python & mehr</li>
+            </ul>
+            <a href="https://cp.nebuliton.io/index.php?rp=/store/discord-bot-hosting/discord-bot-mini" target="_blank" class="plan-button">Jetzt bestellen</a>
+        </div>
+
+        <div class="plan-card">
+            <h3 class="plan-name">Bot Standard</h3>
+            <div class="plan-price">€6,99 / Monat</div>
+            <ul class="plan-features">
+                <li>1 GB RAM</li>
+                <li>1 vCore Ryzen™ 9 9950X3D</li>
+                <li>10 GB NVMe Speicher</li>
+                <li>24/7 Online</li>
+                <li>Automatische Restarts</li>
+                <li>Discord Support</li>
+                <li>Node.js, Python & mehr</li>
+                <li>Erweiterte Logs</li>
+            </ul>
+            <a href="https://cp.nebuliton.io/index.php?rp=/store/discord-bot-hosting/discord-bot-standard" target="_blank" class="plan-button">Jetzt bestellen</a>
+        </div>
+
+        <div class="plan-card">
+            <h3 class="plan-name">Bot Premium</h3>
+            <div class="plan-price">€9,99 / Monat</div>
+            <ul class="plan-features">
+                <li>2 GB RAM</li>
+                <li>2 vCores Ryzen™ 9 9950X3D</li>
+                <li>20 GB NVMe Speicher</li>
+                <li>24/7 Online</li>
+                <li>Automatische Restarts</li>
+                <li>Discord Support</li>
+                <li>Node.js, Python & mehr</li>
+                <li>Erweiterte Logs</li>
+                <li>Prioritäts-Support</li>
+            </ul>
+            <a href="https://cp.nebuliton.io/index.php?rp=/store/discord-bot-hosting/discord-bot-premium" target="_blank" class="plan-button">Jetzt bestellen</a>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="faq-section" id="faq">
+    <div class="faq-card">
+        <h2 class="faq-title">❓ Häufig gestellte Fragen</h2>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <div class="faq-icon">🤖</div>
+                <div class="faq-question-text">Welche Bot-Sprachen werden unterstützt?</div>
+                <div class="faq-toggle">▼</div>
+            </div>
+            <div class="faq-answer">
+                Wir unterstützen alle gängigen Programmiersprachen für Discord Bots: Node.js (discord.js), Python (discord.py), Java (JDA), C# (Discord.NET), Go (DiscordGo) und viele mehr. Du kannst auch eigene Umgebungen einrichten.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <div class="faq-icon">⚡</div>
+                <div class="faq-question-text">Wie schnell startet mein Bot nach einem Crash?</div>
+                <div class="faq-toggle">▼</div>
+            </div>
+            <div class="faq-answer">
+                Unser Monitoring-System erkennt Bot-Crashes innerhalb von Sekunden und startet deinen Bot automatisch neu. In der Regel ist dein Bot binnen 10-30 Sekunden wieder online.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <div class="faq-icon">📁</div>
+                <div class="faq-question-text">Kann ich mehrere Bots auf einem Paket hosten?</div>
+                <div class="faq-toggle">▼</div>
+            </div>
+            <div class="faq-answer">
+                Ja, solange die Ressourcen (RAM, CPU) ausreichen, kannst du mehrere Bots parallel laufen lassen. Wir empfehlen das Standard oder Premium Paket für mehrere Bots.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <div class="faq-icon">🔄</div>
+                <div class="faq-question-text">Wie lade ich meinen Bot-Code hoch?</div>
+                <div class="faq-toggle">▼</div>
+            </div>
+            <div class="faq-answer">
+                Du kannst deinen Code per SFTP, Git Clone oder über unser Web-Interface hochladen. Wir unterstützen auch direkte GitHub/GitLab Integration für automatische Deployments.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <div class="faq-icon">💾</div>
+                <div class="faq-question-text">Werden meine Bot-Daten gesichert?</div>
+                <div class="faq-toggle">▼</div>
+            </div>
+            <div class="faq-answer">
+                Ja, alle Bot-Daten werden täglich automatisch gesichert. Du kannst auch jederzeit manuelle Backups erstellen und alte Versionen wiederherstellen.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <div class="faq-icon">🎵</div>
+                <div class="faq-question-text">Kann ich Musik-Bots hosten?</div>
+                <div class="faq-toggle">▼</div>
+            </div>
+            <div class="faq-answer">
+                Absolut! Unsere Server sind perfekt für Musik-Bots geeignet. Mit ausreichend Bandbreite und CPU-Power für YouTube, Spotify und andere Audio-Quellen.
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Additional Info Section -->
+<section class="intro">
+    <div class="intro-card">
+        <h2>🎯 Warum Nebuliton für Discord Bots?</h2>
+        <p>Discord Bots brauchen zuverlässige Infrastruktur. Unsere <strong>AMD Ryzen™ 9 9950X3D</strong> Server mit <strong>DDR5 ECC RAM</strong> sorgen dafür, dass dein Bot auch bei hoher Last stabil läuft.</p>
+
+        <p>Mit <strong>automatischen Restarts</strong>, <strong>24/7 Monitoring</strong> und <strong>blitzschnellen NVMe SSDs</strong> ist dein Bot immer bereit für deine Community. Egal ob kleiner Server oder große Gaming-Community mit tausenden Mitgliedern.</p>
+
+        <p><strong>Starte jetzt und bringe deinen Bot online!</strong></p>
+    </div>
 </section>
 
 <!-- Footer -->
@@ -899,7 +1091,7 @@
 </footer>
 
 <script>
-    // Create animated starfield
+    // Create animated stars
     function createStars() {
         const starsContainer = document.getElementById('stars');
         const numberOfStars = 150;
@@ -933,23 +1125,42 @@
         }
     }
 
-    // Smooth scrolling for navigation links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
+    // FAQ Toggle functionality
+    function toggleFAQ(element) {
+        const faqItem = element.parentElement;
+        const answer = faqItem.querySelector('.faq-answer');
+
+        // Close all other FAQ items
+        document.querySelectorAll('.faq-item').forEach(item => {
+            if (item !== faqItem) {
+                item.classList.remove('active');
+                item.querySelector('.faq-answer').classList.remove('active');
             }
         });
-    });
 
-    // Initialize
+        // Toggle current FAQ item
+        faqItem.classList.toggle('active');
+        answer.classList.toggle('active');
+    }
+
+    // Smooth scrolling for navigation links
     document.addEventListener('DOMContentLoaded', function() {
         createStars();
+
+        // Add smooth scrolling to all links with hash
+        const links = document.querySelectorAll('a[href^="#"]');
+        links.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
     });
 
     // Add scroll effect to navigation
@@ -962,21 +1173,32 @@
     const mobileMenu = document.getElementById('mobileMenu');
     const mobileClose = document.getElementById('mobileClose');
 
-    mobileMenuBtn.addEventListener('click', function() {
-        mobileMenu.classList.add('active');
-        document.body.style.overflow = 'hidden';
-    });
+    if (mobileMenuBtn && mobileMenu && mobileClose) {
+        mobileMenuBtn.addEventListener('click', function() {
+            mobileMenu.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
 
-    mobileClose.addEventListener('click', function() {
-        mobileMenu.classList.remove('active');
-        document.body.style.overflow = 'auto';
-    });
-
-    // Close mobile menu when clicking outside
-    mobileMenu.addEventListener('click', function(e) {
-        if (e.target === mobileMenu) {
+        mobileClose.addEventListener('click', function() {
             mobileMenu.classList.remove('active');
             document.body.style.overflow = 'auto';
+        });
+
+        // Close mobile menu when clicking outside
+        mobileMenu.addEventListener('click', function(e) {
+            if (e.target === mobileMenu) {
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+    }
+
+    // Add parallax effect to hero section
+    window.addEventListener('scroll', function() {
+        const scrolled = window.pageYOffset;
+        const hero = document.querySelector('.hero');
+        if (hero) {
+            hero.style.transform = `translateY(${scrolled * 0.5}px)`;
         }
     });
 </script>
