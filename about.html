@@ -325,12 +325,29 @@
       grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
       gap: 2rem;
       margin-bottom: 3rem;
+      justify-items: center;
     }
 
-    .team-grid .team-card:last-child {
-      grid-column: 1 / -1;
-      max-width: 350px;
-      margin: 0 auto;
+    /* For larger screens with 3 columns, center the last 2 cards */
+    @media (min-width: 1200px) {
+      .team-grid {
+        grid-template-columns: repeat(3, 1fr);
+        max-width: 1200px;
+        margin: 0 auto 3rem auto;
+      }
+
+      /* Last 2 cards span middle area */
+      .team-grid .team-card:nth-child(7) {
+        grid-column: 1;
+        justify-self: end;
+        margin-right: 1rem;
+      }
+
+      .team-grid .team-card:nth-child(8) {
+        grid-column: 2;
+        justify-self: start;
+        margin-left: 1rem;
+      }
     }
 
     .team-card {
@@ -996,6 +1013,16 @@
         <h3 class="team-name">Louis</h3>
         <p class="team-role">Community Manager</p>
         <p class="team-description">Ich bin Dein erster Ansprechpartner für jegliche Fragen, Vorschläge und Kritik und freue mich von Dir zu hören! Und falls Du auf unseren Socials unterwegs bist, freue ich mich, Dich dort zu treffen!</p>
+      </div>
+    </div>
+
+    <!-- Vin -->
+    <div class="team-card">
+      <div class="team-card-content">
+        <img src="teamler7.webp" alt="Vin" class="team-photo">
+        <h3 class="team-name">Vin</h3>
+        <p class="team-role">Infrastruktur & Sicherheit</p>
+        <p class="team-description">Vin trinkt täglich um die 10 Tassen Kaffee damit er genug Power hat sich um die Infrastruktur von Nebuliton zu kümmern und schädlinge aus unserer Leitung fern zu halten.</p>
       </div>
     </div>
 
